@@ -1,0 +1,279 @@
+{
+    "Legendary": [
+        "Articuno",
+        "Zapdos",
+        "Moltres",
+        "Mewtwo",
+        "Raikou",
+        "Entei",
+        "Suicune",
+        "Lugia",
+        "Ho-Oh",
+        "Beldum",
+        "Metang",
+        "Metagross",
+        "Regirock",
+        "Regice",
+        "Registeel",
+        "Latias",
+        "Latios",
+        "Kyogre",
+        "Groudon",
+        "Jirachi",
+        "Deoxys",
+        "Uxie",
+        "Mesprit",
+        "Azelf",
+        "Dialga",
+        "Palkia",
+        "Heatran",
+        "Regigigas",
+        "Giratina",
+        "Cresselia",
+        "Manaphy",
+        "Darkrai",
+        "Arceus",
+        "Cobalion",
+        "Terrakion",
+        "Virizion",
+        "Tornadus",
+        "Thundurus",
+        "Reshiram",
+        "Zekrom",
+        "Landorus",
+        "Kyurem",
+        "Keldeo",
+        "Meloetta",
+        "Genesect",
+        "Xerneas",
+        "Yveltal",
+        "Zygarde",
+        "Diancie",
+        "Hoopa",
+        "Volcanion",
+        "Type: Null",
+        "Silvally",
+        "Tapu Koko",
+        "Tapu Lele",
+        "Tapu Bulu",
+        "Tapu Fini",
+        "Cosmog",
+        "Cosmoem",
+        "Solgaleo",
+        "Lunala",
+        "Nihilego",
+        "Buzzwole",
+        "Pheromosa",
+        "Xurkitree",
+        "Celesteela",
+        "Kartana",
+        "Guzzlord",
+        "Necrozma",
+        "Magearna",
+        "Marshadow",
+        "Poipole",
+        "Naganadel",
+        "Stakataka",
+        "Blacephalon",
+        "Zeraora",
+        "Meltan",
+        "Melmetal"
+    ],
+
+    "Mythical": [
+        "Eevee",
+        "Mew",
+        "Celebi",
+        "Rayquaza",
+        "Rotom",
+        "Phione",
+        "Shaymin",
+        "Victini"
+    ],
+
+    "Rare": [
+        "Alolan Diglett",
+        "Alolan Dugtrio",
+        "Alolan Exeggutor",
+        "Alolan Geodude",
+        "Alolan Golem",
+        "Alolan Graveler",
+        "Alolan Grimer",
+        "Alolan Marowak",
+        "Alolan Meowth",
+        "Alolan Muk",
+        "Alolan Ninetales",
+        "Alolan Persian",
+        "Alolan Raichu",
+        "Alolan Raticate",
+        "Alolan Rattata",
+        "Alolan Sandshrew",
+        "Alolan Sandslash",
+        "Alolan Vulpix",
+
+        "Abra",
+        "Kadabra",
+        "Alakazam",
+
+        "Ponyta",
+        "Rapidash",
+
+        "Magnemite",
+        "Magneton",
+        "Magnezone",
+
+        "Gastly",
+        "Haunter",
+        "Gengar",
+
+        "Rhyhorn",
+        "Rhydon",
+        "Rhyperior",
+
+        "Chansey",
+        "Blissey",
+
+        "Kangaskhan",
+
+        "Scyther",
+        "Scizor",
+
+        "Magikarp",
+        "Gyarados",
+
+        "Lapras",
+
+        "Ditto",
+
+        "Vaporeon",
+        "Jolteon",
+        "Flareon",
+        "Espeon",
+        "Umbreon",
+        "Leafeon",
+        "Glaceon",
+        "Sylveon",
+
+        "Porygon",
+        "Porygon2",
+        "Porygon-Z",
+
+        "Aerodactyl",
+
+        "Munchlax",
+        "Snorlax",
+
+        "Dratini",
+        "Dragonair",
+        "Dragonite",
+
+        "Unown",
+
+        "Steelix",
+
+        "Heracross",
+
+        "Skarmory",
+
+        "Larvitar",
+        "Pupitar",
+        "Tyranitar",
+
+        "Sceptile",
+        "Blaziken",
+        "Swampert",
+
+        "Ralts",
+        "Kirlia",
+        "Gardevoir",
+        "Gallade",
+
+        "Trapinch",
+        "Vibrava",
+        "Flygon",
+
+        "Swablu",
+        "Altaria",
+
+        "Anorith",
+        "Armaldo",
+
+        "Feebas",
+        "Milotic",
+
+        "Chimecho",
+
+        "Absol",
+
+        "Bagon",
+        "Shelgon",
+        "Salamence",
+
+        "Gible",
+        "Gabite",
+        "Garchomp",
+
+        "Riolu",
+        "Lucario",
+
+        "Drilbur",
+        "Excadrill",
+
+        "Audino",
+
+        "Conkeldurr",
+
+        "Archen",
+        "Archeops",
+
+        "Zorua",
+        "Zoroark",
+
+        "Axew",
+        "Fraxure",
+        "Haxorus",
+
+        "Pawniard",
+        "Bisharp",
+
+        "Deino",
+        "Zweilous",
+        "Hydreigon",
+
+        "Larvesta",
+        "Volcarona",
+
+        "Flabébé",
+        "Floette",
+        "Florges",
+
+        "Tyrunt",
+        "Tyrantrum",
+
+        "Amaura",
+        "Aurorus",
+
+        "Goomy",
+        "Sliggoo",
+        "Goodra",
+
+        "Mareanie",
+        "Toxapex",
+
+        "Minior",
+
+        "Mimikyu",
+
+        "Drampa",
+
+        "Dhelmise",
+
+        "Jangmo-o",
+        "Hakamo-o",
+        "Kommo-o"
+    ],
+
+    "Common": [],
+
+    "Trash": []
+}
