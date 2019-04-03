@@ -61,7 +61,7 @@ async def gotta_catch_em_all(message):
         if chan in identify_channels or chan in alert_channels:
             identify_category = identify_channels.get(chan)
             role, alert_category = alert_channels.get(chan, (None, None))
-            result = rotomdex.identify(message.embeds[0].image.url)
+            result = rotomdex.identify(url=message.embeds[0].image.url)
             match = result["best_match"]
             p = match.pokemon
             identification = f"A wild **{p}** has appeared! It's a **{p.category}** pokémon."

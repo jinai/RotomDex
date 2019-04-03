@@ -20,13 +20,14 @@ def set_hashes(path):
         _hashes = {imagehash.hex_to_hash(key): value for key, value in json.load(f).items()}
 
 
-def identify(arg, exact_only=False):
-    if isinstance(arg, str):
-        image = _download_image(arg)
-    elif isinstance(arg, Image.Image):
-        image = _prepare_image(arg)
+def identify(*, im=None, url=None, exact_only=False):
+    if im:
+        image = _prepare_image(im)
+    elif url:
+        image = _prepare_image(_download_image(url))
     else:
-        return
+        raise ValueError
+
     image_hash = imagehash.dhash(image)
     result = {
         "best_match": None,
@@ -82,7 +83,7 @@ if __name__ == '__main__':
             print(f"{filename:<30}", end=" | ")
             path = os.path.join(target, filename)
             image = _prepare_image(Image.open(path).convert("RGBA"))
-            r = identify(image)
+            r = identify(im=image)
             m = r["best_match"]
             score = f"[{m.score}]" if m.score > 0 else f" {m.score}"
             print(f"{m.pokemon!s:<13} | {score}")
