@@ -5,9 +5,6 @@ import json
 import os
 import re
 
-from discord.ext import commands
-
-import pokemon
 import urlmarker
 
 
@@ -26,15 +23,10 @@ def get_filename_from_url(url):
 
 
 def get_timestamp(*, fmt="%H:%M:%S", wrap=lambda ts: f"[{ts}]"):
-    return wrap(datetime.datetime.now().strftime(fmt))
-
-
-class CategoryConverter(commands.Converter):
-    async def convert(self, ctx, argument):
-        if argument.isdigit():
-            return pokemon.Category(int(argument))
-        else:
-            return pokemon.Category[argument.title()]
+    ts = datetime.datetime.now().strftime(fmt)
+    if callable(wrap):
+        return wrap(ts)
+    return ts
 
 
 class BaseEnum(enum.Enum):
