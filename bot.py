@@ -35,8 +35,10 @@ def owner_or_has_permissions(**perms):
 
 @bot.before_invoke
 async def log_command(ctx):
+    if ctx.invoked_subcommand:
+        return
     ts = crayons.white(utils.get_timestamp(), bold=True)
-    msg = crayons.green(ctx.message.content, bold=True)
+    msg = crayons.green(ctx.message.content.replace(ctx.prefix, "", 1), bold=True)
     chan = crayons.magenta(f"#{ctx.channel}", bold=True)
     guild = crayons.magenta(f"({ctx.guild})")
     user = crayons.yellow(f"{ctx.author}", bold=True)
@@ -101,17 +103,15 @@ async def alert_info(ctx):
 async def alert_enable(ctx, *, message=""):
     parser = utils.NoExitParser()
     parser.add_argument("role")
-    parser.add_argument("-c", "--cat", "--category", dest="category", default="Mythical", type=pokemon.Category.parse)
+    parser.add_argument("-c", "--category", default="Mythical", type=pokemon.Category.parse)
     parser.add_argument("-s", "--server", action="store_true")
     parser.add_argument("-o", "--override", action="store_true")
     try:
         args = parser.parse_args(shlex.split(message))
         args.role = await commands.RoleConverter().convert(ctx, args.role)
     except ValueError:
-        msg = f"**Usage:** `{ctx.prefix}alert (enable|on) <role> [-c | --cat | --category <category>] [-s | --server] [-o | --override]`"
-        await ctx.send(msg)
-    except commands.BadArgument as e:
-        await ctx.send(e)
+        usage = f"`{ctx.prefix}alert (enable|on) <role> [-c | --category <category>] [-s | --server] [-o | --override]`"
+        await ctx.send(f"**Usage:** {usage}")
     except KeyError as e:
         await ctx.send(f"Unknown category: {e}. Valid categories are: `{' | '.join(pokemon.Category.names())}`")
     else:
@@ -127,10 +127,11 @@ async def alert_enable(ctx, *, message=""):
             alert_servers.add(ctx.guild)
             ack = f"Enabled alerts in all channels: **@{args.role}** will be pinged for **{args.category}+** pokémons."
             if already_exists > 0:
+                ack += f"\n{already_exists} channels already had alerts on and have been "
                 if args.override:
-                    ack += f"\n{already_exists} channels already had alerts on and have been overridden."
+                    ack += f"overridden."
                 else:
-                    ack += f"\n{already_exists} channels already had alerts on and have been skipped. Use `-o` or `--override` to override them."
+                    ack += f"skipped. Use `-o | --override` to override them."
         else:
             alert_channels[ctx.channel] = (args.role, args.category)
             ack = f"Enabled alerts in {ctx.channel.mention}: **@{args.role}** will be pinged for **{args.category}+** pokémons."
@@ -179,11 +180,14 @@ async def identify_info(ctx):
 @owner_or_has_permissions(manage_guild=True)
 async def identify_enable(ctx, *, message=""):
     parser = utils.NoExitParser()
-    parser.add_argument("category", nargs="?", default="Common", type=pokemon.Category.parse)
+    parser.add_argument("-c", "--category", default="Common", type=pokemon.Category.parse)
     parser.add_argument("-s", "--server", action="store_true")
     parser.add_argument("-o", "--override", action="store_true")
     try:
-        args, unknown = parser.parse_known_args(shlex.split(message))
+        args = parser.parse_args(shlex.split(message))
+    except ValueError:
+        usage = f"`{ctx.prefix}identify (enable|on) [-c | --category <category>] [-s | --server] [-o | --override]`"
+        await ctx.send(f"**Usage:** {usage}")
     except KeyError as e:
         await ctx.send(f"Unknown category: {e}. Valid categories are: `{' | '.join(pokemon.Category.names())}`")
     else:
@@ -199,10 +203,11 @@ async def identify_enable(ctx, *, message=""):
             identify_servers.add(ctx.guild)
             ack = f"Enabled identification in all channels for **{args.category}+** pokémons."
             if already_exists > 0:
+                ack += f"\n{already_exists} channels already had identification on and have been "
                 if args.override:
-                    ack += f"\n{already_exists} channels already had identification on and have been overridden."
+                    ack += f"overridden."
                 else:
-                    ack += f"\n{already_exists} channels already had identification on and have been skipped. Use `-o` or `--override` to override them."
+                    ack += f"skipped. Use `-o | --override` to override them."
         else:
             identify_channels[ctx.channel] = args.category
             ack = f"Enabled identification in {ctx.channel.mention} for **{args.category}+** pokémons."
@@ -260,7 +265,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     ts = crayons.white(utils.get_timestamp(), bold=True)
-    print(f"{ts} {crayons.red(error.__class__.__name__, bold=True)}")
+    print(f"{ts} {crayons.red(error.__class__.__name__, bold=True)} {error}")
     if isinstance(error, commands.NotOwner):
         await ctx.send("**Restricted command.**", delete_after=10)
     elif isinstance(error, commands.MissingPermissions):
