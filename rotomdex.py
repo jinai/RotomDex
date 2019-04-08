@@ -14,7 +14,7 @@ _hashes = {}
 Match = namedtuple("Match", "pokemon score")
 
 
-def set_hashes(path):
+def load_hashes(path):
     global _hashes
     with open(path, "r", encoding="utf-8") as f:
         _hashes = {imagehash.hex_to_hash(key): value for key, value in json.load(f).items()}
@@ -44,23 +44,13 @@ def identify(*, im=None, url=None, exact_only=False):
     return result
 
 
-def _prepare_image(image):
-    image = _crop_image(image)
-    return _apply_background(image)
-
-
-def _apply_background(image, color=(255, 255, 255)):
-    """ Source: https://stackoverflow.com/a/33507138/10203343 """
-    background = Image.new(mode='RGBA', size=image.size, color=color)
-    alpha_composite = Image.alpha_composite(background, image)
-    return alpha_composite
-
-
-def _crop_image(image):
+def _prepare_image(im, bg_color=(0, 0, 0, 0)):
     """ Source: https://stackoverflow.com/a/53829086/10203343 """
-    black = Image.new(mode='RGBA', size=image.size)
-    image = Image.composite(image, black, image)
-    return image.crop(image.getbbox())
+    if im.mode != "RGBA":
+        im = im.convert("RGBA")
+    background = Image.new(mode="RGBA", size=im.size, color=bg_color)
+    composite = Image.composite(im, background, im)
+    return composite.crop(composite.getbbox())
 
 
 def _download_image(url):
@@ -69,21 +59,23 @@ def _download_image(url):
         return Image.open(io.BytesIO(r.content))
 
 
-set_hashes(_hashes_path)
+load_hashes(_hashes_path)
 
 if __name__ == '__main__':
+    import time
     import os
 
-    header = "Test case                      | Best match    | Score (lower is better, 0 = exact match)"
-    line__ = "-------------------------------+---------------+-----------------------------------------"
-    print(f"\n{header}\n{line__}")
+    start = time.perf_counter()
+    print("Test case                      | Best match       | Score* | Result")
+    print("-------------------------------+------------------+--------+-------")
     target = os.path.join("data", "test")
     for filename in os.listdir(target):
         if filename.endswith(".png") or filename.endswith(".jpg"):
-            print(f"{filename:<30}", end=" | ")
-            path = os.path.join(target, filename)
-            image = _prepare_image(Image.open(path).convert("RGBA"))
+            image = Image.open(os.path.join(target, filename))
             r = identify(im=image)
             m = r["best_match"]
             score = f"[{m.score}]" if m.score > 0 else f" {m.score}"
-            print(f"{m.pokemon!s:<13} | {score}")
+            result = "✔" if m.pokemon.name.lower().replace(":", "") in filename.lower() else "Fail"
+            print(f"{filename:<30} | {m.pokemon!s:<16} | {score:<6} | {result}")
+    print("*Lower is better. A zero means an exact match (same hash).")
+    print(f"\nExecuted tests in {time.perf_counter() - start} seconds.")

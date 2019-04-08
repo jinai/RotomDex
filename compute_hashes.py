@@ -30,7 +30,7 @@ def compute_hashes(*, source_dir, output_dir=None, output_name="dhash.json"):
         padding = len(source_dir) + 24
         print(f"{path:{padding}} >", end=" ", flush=True)
         try:
-            image = rotomdex._prepare_image(Image.open(path).convert("RGBA"))
+            image = rotomdex._prepare_image(Image.open(path))
             hash = imagehash.dhash(image)
             pokemon = pokedex[str(int(filename[:3]))]
             if "alola" in filename.lower():
