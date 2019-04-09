@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-"discord.py" = {editable = true,git = "git://github.com/Rapptz/discord.py",ref = "rewrite"}
+discord-py = "*"
 requests = "*"
 pillow = "*"
 imagehash = "*"
