@@ -79,7 +79,6 @@
         "Meltan",
         "Melmetal"
     ],
-
     "Mythical": [
         "Eevee",
         "Mew",
@@ -90,8 +89,39 @@
         "Shaymin",
         "Victini"
     ],
-
     "Rare": [
+        "Clefable",
+
+        "Ditto",
+
+        "Snorlax",
+
+        "Steelix",
+
+        "Scizor",
+
+        "Mantyke",
+        "Mantine",
+
+        "Skarmory",
+
+        "Relicanth",
+
+        "Basculin",
+
+        "Cryogonal",
+
+        "Dhelmise",
+
+        "Lucario",
+
+        "Zorua",
+        "Zoroark",
+
+        "Larvesta",
+        "Volcarona"
+    ],
+    "Uncommon": [
         "Alolan Diglett",
         "Alolan Dugtrio",
         "Alolan Exeggutor",
@@ -111,23 +141,14 @@
         "Alolan Sandslash",
         "Alolan Vulpix",
 
-        "Abra",
-        "Kadabra",
         "Alakazam",
 
-        "Ponyta",
         "Rapidash",
 
-        "Magnemite",
-        "Magneton",
         "Magnezone",
 
-        "Gastly",
-        "Haunter",
         "Gengar",
 
-        "Rhyhorn",
-        "Rhydon",
         "Rhyperior",
 
         "Chansey",
@@ -136,14 +157,10 @@
         "Kangaskhan",
 
         "Scyther",
-        "Scizor",
 
-        "Magikarp",
         "Gyarados",
 
         "Lapras",
-
-        "Ditto",
 
         "Vaporeon",
         "Jolteon",
@@ -154,110 +171,65 @@
         "Glaceon",
         "Sylveon",
 
-        "Porygon",
-        "Porygon2",
         "Porygon-Z",
 
         "Aerodactyl",
 
         "Munchlax",
-        "Snorlax",
 
-        "Dratini",
-        "Dragonair",
         "Dragonite",
-
-        "Unown",
-
-        "Steelix",
 
         "Heracross",
 
-        "Skarmory",
-
-        "Larvitar",
-        "Pupitar",
         "Tyranitar",
 
         "Sceptile",
         "Blaziken",
         "Swampert",
 
-        "Ralts",
-        "Kirlia",
         "Gardevoir",
         "Gallade",
 
-        "Trapinch",
-        "Vibrava",
         "Flygon",
 
-        "Swablu",
         "Altaria",
 
-        "Anorith",
         "Armaldo",
 
-        "Feebas",
         "Milotic",
 
         "Chimecho",
 
         "Absol",
 
-        "Bagon",
-        "Shelgon",
         "Salamence",
 
-        "Gible",
-        "Gabite",
         "Garchomp",
 
         "Riolu",
-        "Lucario",
 
-        "Drilbur",
         "Excadrill",
 
         "Audino",
 
         "Conkeldurr",
 
-        "Archen",
         "Archeops",
 
-        "Zorua",
-        "Zoroark",
-
-        "Axew",
-        "Fraxure",
         "Haxorus",
 
-        "Pawniard",
         "Bisharp",
 
-        "Deino",
-        "Zweilous",
         "Hydreigon",
 
-        "Larvesta",
-        "Volcarona",
-
-        "Flabébé",
-        "Floette",
         "Florges",
 
-        "Tyrunt",
         "Tyrantrum",
 
-        "Amaura",
         "Aurorus",
 
-        "Goomy",
-        "Sliggoo",
         "Goodra",
 
-        "Mareanie",
         "Toxapex",
 
         "Minior",
@@ -266,14 +238,79 @@
 
         "Drampa",
 
-        "Dhelmise",
-
-        "Jangmo-o",
-        "Hakamo-o",
         "Kommo-o"
     ],
+    "Common": [
+        "Abra",
+        "Kadabra",
 
-    "Common": [],
+        "Ponyta",
 
-    "Trash": []
+        "Magnemite",
+        "Magneton",
+
+        "Gastly",
+        "Haunter",
+
+        "Rhyhorn",
+        "Rhydon",
+
+        "Magikarp",
+
+        "Porygon",
+        "Porygon2",
+
+        "Dratini",
+        "Dragonair",
+
+        "Unown",
+
+        "Larvitar",
+        "Pupitar",
+
+        "Ralts",
+        "Kirlia",
+
+        "Trapinch",
+        "Vibrava",
+
+        "Swablu",
+
+        "Anorith",
+
+        "Feebas",
+
+        "Bagon",
+        "Shelgon",
+
+        "Gible",
+        "Gabite",
+
+        "Drilbur",
+
+        "Axew",
+        "Fraxure",
+
+        "Archen",
+
+        "Pawniard",
+
+        "Deino",
+        "Zweilous",
+
+        "Flabébé",
+        "Floette",
+
+        "Tyrunt",
+
+        "Amaura",
+
+        "Goomy",
+        "Sliggoo",
+
+        "Mareanie",
+
+        "Jangmo-o",
+        "Hakamo-o"
+    ]
 }

@@ -1,4 +1,5 @@
 import json
+from enum import auto
 
 import utils
 
@@ -43,11 +44,11 @@ class Generation(utils.OrderedEnum):
 
 
 class Category(utils.OrderedEnum):
-    Trash = 1
-    Common = 2
-    Rare = 3
-    Mythical = 4
-    Legendary = 5
+    Common = auto()
+    Uncommon = auto()
+    Rare = auto()
+    Mythical = auto()
+    Legendary = auto()
 
     @staticmethod
     def from_pokemon_id(id):
@@ -62,6 +63,8 @@ class Category(utils.OrderedEnum):
             return Category.Mythical
         if name in categories['Rare']:
             return Category.Rare
+        if name in categories['Uncommon']:
+            return Category.Uncommon
         return Category.Common
 
     @staticmethod
