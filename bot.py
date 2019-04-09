@@ -66,7 +66,7 @@ async def gotta_catch_em_all(message):
             result = rotomdex.identify(url=message.embeds[0].image.url)
             match = result["best_match"]
             p = match.pokemon
-            identification = f"A wild **{p}** has appeared! It's a **{p.category}** pokémon."
+            identification = f"A wild **{p}** has appeared! It's a **{p.category}** Pokémon."
 
             if chan in identify_channels:
                 if chan in alert_channels and p.category >= alert_category:
@@ -94,7 +94,7 @@ async def alert_info(ctx):
         msg = f"Alerts are disabled in {ctx.channel.mention}."
     else:
         role, category = alert_channels[ctx.channel]
-        msg = f"Alerts in {ctx.channel.mention}: **@{role}** will be pinged for **{category}+** pokémons."
+        msg = f"Alerts in {ctx.channel.mention}: **@{role}** will be pinged for **{category}+** Pokémon."
     await ctx.send(msg)
 
 
@@ -125,7 +125,7 @@ async def alert_enable(ctx, *, message=""):
                 else:
                     alert_channels[channel] = (args.role, args.category)
             alert_servers.add(ctx.guild)
-            ack = f"Enabled alerts in all channels: **@{args.role}** will be pinged for **{args.category}+** pokémons."
+            ack = f"Enabled alerts in all channels: **@{args.role}** will be pinged for **{args.category}+** Pokémon."
             if already_exists > 0:
                 ack += f"\n{already_exists} channels already had alerts on and have been "
                 if args.override:
@@ -134,7 +134,7 @@ async def alert_enable(ctx, *, message=""):
                     ack += f"skipped. Use `-o | --override` to override them."
         else:
             alert_channels[ctx.channel] = (args.role, args.category)
-            ack = f"Enabled alerts in {ctx.channel.mention}: **@{args.role}** will be pinged for **{args.category}+** pokémons."
+            ack = f"Enabled alerts in {ctx.channel.mention}: **@{args.role}** will be pinged for **{args.category}+** Pokémon."
         await ctx.send(ack)
 
 
@@ -172,7 +172,7 @@ async def identify_info(ctx):
         msg = f"Identification is disabled in {ctx.channel.mention}."
     else:
         category = identify_channels[ctx.channel]
-        msg = f"Identification is enabled in {ctx.channel.mention} for **{category}+** pokémons."
+        msg = f"Identification is enabled in {ctx.channel.mention} for **{category}+** Pokémon."
     await ctx.send(msg)
 
 
@@ -201,7 +201,7 @@ async def identify_enable(ctx, *, message=""):
                 else:
                     identify_channels[channel] = args.category
             identify_servers.add(ctx.guild)
-            ack = f"Enabled identification in all channels for **{args.category}+** pokémons."
+            ack = f"Enabled identification in all channels for **{args.category}+** Pokémon."
             if already_exists > 0:
                 ack += f"\n{already_exists} channels already had identification on and have been "
                 if args.override:
@@ -210,7 +210,7 @@ async def identify_enable(ctx, *, message=""):
                     ack += f"skipped. Use `-o | --override` to override them."
         else:
             identify_channels[ctx.channel] = args.category
-            ack = f"Enabled identification in {ctx.channel.mention} for **{args.category}+** pokémons."
+            ack = f"Enabled identification in {ctx.channel.mention} for **{args.category}+** Pokémon."
         await ctx.send(ack)
 
 
