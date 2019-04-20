@@ -2,7 +2,7 @@ import os
 import shlex
 
 import crayons
-from discord import HTTPException, Permissions
+import discord
 from discord.ext import commands
 from discord.utils import oauth_url
 
@@ -66,12 +66,21 @@ async def gotta_catch_em_all(message):
             result = rotomdex.identify(url=message.embeds[0].image.url)
             match = result["best_match"]
             p = match.pokemon
-            identification = f"A wild **{p}** has appeared! It's a **{p.category}** Pokémon."
+            article = "an" if p.category == pokemon.Category.Uncommon else "a"
+            identification = f"A wild **{p}** has appeared! It's {article} **{p.category}** Pokémon."
 
+            is_mentionable = role.mentionable
+            pinged = False
             if chan in identify_channels:
                 if chan in alert_channels and p.category >= alert_category:
                     await chan.trigger_typing()
                     log_pokemon(match, message)
+                    if not is_mentionable:
+                        try:
+                            await role.edit(mentionable=True)
+                            pinged = True
+                        except discord.Forbidden:
+                            pass
                     await chan.send(f"{role.mention} {identification}")
                 elif p.category >= identify_category:
                     await chan.trigger_typing()
@@ -79,7 +88,16 @@ async def gotta_catch_em_all(message):
             elif p.category >= alert_category:
                 await chan.trigger_typing()
                 log_pokemon(match, message)
+                if not is_mentionable:
+                    try:
+                        await role.edit(mentionable=True)
+                        pinged = True
+                    except discord.Forbidden:
+                        pass
                 await chan.send(f"{role.mention} {identification}")
+
+            if not is_mentionable and pinged:
+                await role.edit(mentionable=False)
 
 
 @bot.group(aliases=["warn", "ping"])
@@ -236,7 +254,7 @@ async def identify_disable(ctx, *, message=""):
     await ctx.send(ack)
 
 
-@bot.command(aliases=["s"])
+@bot.command(aliases=["s"], hidden=True)
 @commands.is_owner()
 async def say(ctx, *, message):
     await ctx.send(message)
@@ -244,7 +262,7 @@ async def say(ctx, *, message):
 
 @bot.command(aliases=["link"])
 async def invite(ctx):
-    p = Permissions.text()
+    p = discord.Permissions.text()
     p.mention_everyone = False
     p.send_tts_messages = False
     p.manage_roles = True
@@ -258,7 +276,7 @@ async def on_ready():
     owner = bot.get_user(bot.owner_id)
     try:
         await owner.send("Ready !", delete_after=10)
-    except HTTPException:
+    except discord.HTTPException:
         pass
 
 
