@@ -33,6 +33,7 @@
         "Manaphy",
         "Darkrai",
         "Arceus",
+        "Victini",
         "Cobalion",
         "Terrakion",
         "Virizion",
@@ -83,10 +84,8 @@
         "Mew",
         "Celebi",
         "Rayquaza",
-        "Rotom",
         "Phione",
-        "Shaymin",
-        "Victini"
+        "Shaymin"
     ],
     "Rare": [
         "Clefable",
@@ -207,6 +206,8 @@
         "Garchomp",
 
         "Riolu",
+
+        "Rotom",
 
         "Excadrill",
 
