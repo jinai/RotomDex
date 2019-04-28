@@ -57,6 +57,10 @@ class Category(utils.OrderedEnum):
             raise KeyError
 
         name = pokedex_by_id[id]
+        return Category.from_pokemon_name(name)
+
+    @staticmethod
+    def from_pokemon_name(name):
         if name in categories['Legendary']:
             return Category.Legendary
         if name in categories['Mythical']:
@@ -86,7 +90,7 @@ class Pokemon:
         self.name = name
         self.alolan = alolan
         self.generation = Generation.from_pokemon_id(self.id)
-        self.category = Category.from_pokemon_id(self.id)
+        self.category = Category.from_pokemon_name(str(self))
 
     def __repr__(self):
         variant = "Alolan " if self.alolan else ""
